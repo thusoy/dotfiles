@@ -1,5 +1,0 @@
--- Show timing info for each command
-\timing
-
--- Set a custom null display to distinguish from empty strings
-\pset null '<null>'
