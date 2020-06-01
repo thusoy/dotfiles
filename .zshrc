@@ -80,11 +80,6 @@ RPROMPT='$(check_last_exit_code)'
 # Customize the standard prompt
 PROMPT='%n:%1~$(find_git_branch) $ '
 
-# Enable color support of ls
-if [ -x /opt/local/bin/gdircolors ]; then
-    test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
-fi
-
 # Alias definitions.
 . ~/.zsh_aliases
 
@@ -127,3 +122,8 @@ bindkey '\CI' expand-or-complete-prefix
 # Increase key repeat rate
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
+
+# Enable color support of ls
+if [ -x /opt/local/bin/gdircolors ]; then
+    test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
+fi
