@@ -96,7 +96,7 @@ export LC_ALL=en_US.UTF-8
 export LC_TIME=en_GB.UTF-8
 
 # Auto-complete git commands
-source ~/.config/git/auto-complete
+zstyle ':completion:*:*:git:*' script ~/.git-completion.zsh
 
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md="${yellow}";
