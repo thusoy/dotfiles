@@ -123,3 +123,7 @@ bindkey "^[[F" end-of-line # end
 
 # Ignore everything after the cursor for completion
 bindkey '\CI' expand-or-complete-prefix
+
+# Increase key repeat rate
+defaults write -g InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 1
