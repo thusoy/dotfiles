@@ -8,6 +8,8 @@
     excludesfile = "~/.config/git/ignore"
     whitespace=tab-in-indent
     pager = less -FRX
+[commit]
+    gpgsign = true
 [alias]
     st = status
     co = checkout
