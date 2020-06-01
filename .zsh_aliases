@@ -75,9 +75,10 @@ alias .=source
 alias ..='cd ..'
 alias ...='cd ../../'
 alias grep='grep --color=auto'
-alias l='ls -lhF'
-alias ls='ls --color=auto'
+# -G is the BSD ls option for what is --color=auto on GNU ls
+alias ls='ls -G'
 alias ll='ls -alhF'
+alias l='ls -lhF'
 alias sudo='sudo '
 # Print history with timestamp and execution time
 alias history='history -Di'
