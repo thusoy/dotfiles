@@ -127,3 +127,10 @@ defaults write -g KeyRepeat -int 1
 if [ -x /opt/local/bin/gdircolors ]; then
     test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
 fi
+
+# Source all files in ~/.zsh_source
+if [ -d ~/.zsh_source ]; then
+    find ~/.zsh_source -type f | sort | while read file; do
+        source "$file"
+    done
+fi
