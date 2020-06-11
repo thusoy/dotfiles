@@ -103,7 +103,7 @@ export MANPAGER='less -X';
 
 # MacPorts installs to /opt/local
 export MANPATH="/opt/local/man:$MANPATH"
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/gem/bin"
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/gem/bin:$HOME/.cargo/bin"
 export LDFLAGS=-L/opt/local/lib
 export CFLAGS=-I/opt/local/include
 export CPPFLAGS=-I/opt/local/include
