@@ -79,6 +79,8 @@ alias grep='grep --color=auto'
 alias ls='ls -G'
 alias ll='ls -alhF'
 alias l='ls -lhF'
+# -i turns on smartcase search
+alias less='less -i'
 alias config='git --git-dir ~/.dotfiles'
 alias sudo='sudo '
 # Print history with timestamp and execution time
