@@ -30,15 +30,15 @@
     cim = commit -m
     df = diff -C
     dfc = diff --cached -C
-    db = "!git diff -C $(git merge-base master HEAD) HEAD"
+    db = "!git diff -C $(git merge-base $(git symbolic-ref refs/remotes/origin/HEAD | cut -d/ -f4-) HEAD) HEAD"
     dw = "!git diff $(git log --format='%H' --since $(python -c \"import datetime; print((datetime.datetime.now() - datetime.timedelta(days=7)).strftime('%Y-%m-%d'))\") | tail -1)..HEAD"
     lg = log -p
-    lb = log --oneline master..HEAD
+    lb = log --oneline $(git symbolic-ref refs/remotes/origin/HEAD | cut -d/ -f4-)..HEAD
     l = log --oneline
     lga = log --graph --all --oneline
     fix = commit --amend
     plr = pull --rebase
-    brdiff = log -p --no-merges ^master
+    brdiff = log -p --no-merges ^$(git symbolic-ref refs/remotes/origin/HEAD | cut -d/ -f4-)
     lw = "!git log --oneline --since $(python -c \"import datetime; print((datetime.datetime.now() - datetime.timedelta(days=7)).strftime('%Y-%m-%d'))\")"
 
     # Creds to http://stackoverflow.com/a/39086325/5590192
