@@ -57,6 +57,49 @@ cert () {
         | sed -ne '/-BEG/,/-END/p'
 }
 
+interval () {
+    python -c "import argparse, sys
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('number', type=float)
+    parser.add_argument('-m', '--milliseconds', action='store_true')
+    args = parser.parse_args()
+    if args.milliseconds:
+        args.number /= 1000
+    print(interval(args.number))
+
+def interval(num):
+    '''
+    >>> interval(1)
+    '1s'
+    >>> interval(2)
+    '2s'
+    >>> interval(62)
+    '1m2s'
+    >>> interval(3665)
+    '1h1m5s'
+    >>> interval(86401)
+    '1d0h0m1s'
+    '''
+    components = []
+    prefixes = [
+      ('d', 86400, 1e6),
+      ('h', 3600, 24),
+      ('m', 60, 60),
+      ('s', 1, 60),
+    ]
+    for prefix, divisor, modulo in prefixes:
+        if num >= divisor:
+            components.append('%d%s' % (num//divisor % modulo, prefix))
+
+    return ''.join(components)
+
+if __name__ == '__main__':
+    main()
+" "$@"
+}
+
 rev () {
     local new_name="${1%.*}_$(md5 -r $1 | head -c 12).${1##*.}"
     echo "Revving $1 -> $new_name"
