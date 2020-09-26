@@ -139,6 +139,8 @@ alias ql='qlmanage -p'
 alias ptr='dig +short -x'
 alias g=git
 alias v=vagrant
+# Guard since I often mistype `g s`
+alias gs='g s'
 alias uuid='python -c "import uuid; print(uuid.uuid4())"'
 alias telnet='echo "Escape is probably Ctrl+5!"; telnet'
 alias did="vim ~/Dropbox/Notater/done.md +'r!date' +'normal o' +'normal O-  ' +startinsert -c 'set tw=80'"
