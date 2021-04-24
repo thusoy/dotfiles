@@ -114,6 +114,10 @@ netst () {
     fi
 }
 
+dnssort() {
+    python3 -c 'import sys; [sys.stdout.write(".".join(y[::-1]) + "\n") for y in sorted([x.strip().split(".")[::-1] for x in sys.stdin])]'
+}
+
 alias .=source
 alias ..='cd ..'
 alias ...='cd ../../'
