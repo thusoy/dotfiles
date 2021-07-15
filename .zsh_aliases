@@ -133,7 +133,7 @@ alias sudo='sudo '
 # Print history with timestamp and execution time
 alias history='history -Di'
 alias serve='python3 -m http.server'
-alias space='du -shc * .[^.]* | gsort -h'
+alias space='du -shc *(N) .[^.]*(N) | gsort -h'
 alias json='python -m json.tool'
 alias xml='python3 -c "import sys, xml.dom.minidom; ugly_xml = xml.dom.minidom.parseString(sys.stdin.read()); print(ugly_xml.toprettyxml(), end=\"\")"'
 alias pc='python -c'
