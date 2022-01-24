@@ -1,0 +1,16 @@
+SSH_ENV="$HOME/.ssh/environment"
+
+ssh-add -l &>/dev/null
+if [ "$?" = 2 ]; then
+  test -r ~/.ssh-agent && \
+    eval "$(<$SSH_ENV)" >/dev/null
+
+  ssh-add -l &>/dev/null
+  if [ "$?" = 2 ]; then
+    (umask 066; ssh-agent > "$SSH_ENV")
+    eval "$(<$SSH_ENV)" >/dev/null
+    ssh-add
+  fi
+fi
+
+unset SSH_ENV
