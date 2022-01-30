@@ -119,6 +119,7 @@ dnssort() {
 }
 
 sum() {
+    # Helper to sum lines of ints
     sed '2,$s/$/+/;$s/$/p/' | dc
 }
 
