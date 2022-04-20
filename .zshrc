@@ -108,6 +108,9 @@ export LDFLAGS=-L/opt/local/lib
 export CFLAGS=-I/opt/local/include
 export CPPFLAGS=-I/opt/local/include
 
+# Use docker daemon from salt-states vagrant VM
+export DOCKER_HOST=tcp://10.10.10.23:2376
+
 # Key bindings for line navigation
 bindkey "[D" backward-word # alt-left
 bindkey "[C" forward-word # alt-right
