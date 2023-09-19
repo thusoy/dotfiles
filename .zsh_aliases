@@ -155,5 +155,5 @@ alias telnet='echo "Escape is probably Ctrl+5!"; telnet'
 alias did="vim ~/Dropbox/Notater/done.md +'r!date' +'normal o' +'normal O-  ' +startinsert -c 'set tw=80'"
 alias beep='say -v Alex "[[volm 3.0]] BEEP BEEP BEEP BEEP Your [[emph ++]] thang [[emph -]] [[slnc 10]] is done" -r 250'
 alias pubip='curl -s https://canhazip.com'
-alias probe='ffprobe -hide_banner -of json -show_streams -loglevel warning'
+alias probe='ffprobe -hide_banner -of json -show_streams -loglevel level+warning'
 alias jq='docker run --rm -i stedolan/jq'
