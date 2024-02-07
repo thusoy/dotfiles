@@ -24,6 +24,8 @@
     pusho = "!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
     pushf = push --force-with-lease
     s = show --show-notes=*
+    # Don't use show -m to view merge diffs as that is not reliable for non-linear merges
+    sm = show --show-notes=* --first-parent
     log = log --show-notes=*
     br = branch
     ci = commit
