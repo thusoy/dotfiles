@@ -133,7 +133,7 @@ alias ll='ls -alhF'
 alias l='ls -lhF'
 # -i turns on smartcase search
 alias less='less -i'
-alias config='git --git-dir ~/.dotfiles'
+alias config='git --git-dir ~/.dotfiles --work-tree ~/'
 alias sudo='sudo '
 # Print history with timestamp and execution time
 alias history='history -Di'
