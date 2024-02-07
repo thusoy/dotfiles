@@ -157,3 +157,4 @@ alias beep='say -v Alex "[[volm 3.0]] BEEP BEEP BEEP BEEP Your [[emph ++]] thang
 alias pubip='curl -s https://canhazip.com'
 alias probe='ffprobe -hide_banner -of json -show_streams -loglevel level+warning'
 alias jq='docker run --rm -i stedolan/jq'
+alias mediainfo='docker run --rm -it -v $(pwd):/tmp --read-only jlesage/mediainfo mediainfo'
