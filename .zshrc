@@ -108,7 +108,6 @@ export LDFLAGS=-L/opt/local/lib
 export CFLAGS=-I/opt/local/include
 export CPPFLAGS=-I/opt/local/include
 
-
 # Key bindings for line navigation
 bindkey "[D" backward-word # alt-left
 bindkey "[C" forward-word # alt-right
