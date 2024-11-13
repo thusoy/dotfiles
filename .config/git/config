@@ -42,7 +42,7 @@
     # log week
     lw = "!git log --oneline --since $(python -c \"import datetime; print((datetime.datetime.now() - datetime.timedelta(days=7)).strftime('%Y-%m-%d'))\")"
     lg = log -p
-    l = log --oneline
+    l = log --pretty=format:'%C(auto)%h %ad %s %Cblueby %an%Creset' --date=short
     lga = log --graph --all --oneline
     fix = commit --amend
     plr = pull --rebase
