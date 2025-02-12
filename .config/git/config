@@ -45,7 +45,7 @@
     l = log --pretty=format:'%C(auto)%h %ad %s %Cblueby %an%Creset' --date=short
     lga = log --graph --all --oneline
     fix = commit --amend
-    plr = pull --rebase
+    plr = pull --rebase --prune
 
     # Creds to http://stackoverflow.com/a/39086325/5590192
     ignore = update-index --skip-worktree
