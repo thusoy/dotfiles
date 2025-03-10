@@ -109,8 +109,8 @@ export CFLAGS=-I/opt/local/include
 export CPPFLAGS=-I/opt/local/include
 
 # Key bindings for line navigation
-bindkey "[D" backward-word # alt-left
-bindkey "[C" forward-word # alt-right
+bindkey ";3D" backward-word # alt-left
+bindkey ";3C" forward-word # alt-right
 bindkey "^[a" beginning-of-line # ctrl-a
 bindkey "^[e" end-of-line # ctrl-e
 bindkey "^[[H" beginning-of-line  # home
