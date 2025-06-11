@@ -78,7 +78,7 @@ function check_last_exit_code() {
 RPROMPT='$(check_last_exit_code)'
 
 # Customize the standard prompt
-PROMPT='%n:%1~$(find_git_branch) $ '
+PROMPT='%1~$(find_git_branch) $ '
 
 # Alias definitions.
 . ~/.zsh_aliases
