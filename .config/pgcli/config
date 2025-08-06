@@ -1,0 +1,6 @@
+[main]
+# Main is a required section
+
+less_chatty = True
+prompt = '\u@\dsn_alias:\d> '
+use_local_timezone = False
