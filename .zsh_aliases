@@ -165,5 +165,5 @@ alias jq='docker run --rm -i stedolan/jq'
 # Disable globbing for these to avoid having to quote all urls
 alias curl='noglob curl'
 alias wget='noglob wget'
-alias mycli='docker run --rm -it -v ~/.myclirc:/.myclirc -v ~/.mycli-history:/root/.mycli-history -v $(pwd):/app us-east4.pkg.dev/medal-shared/medal-docker/local/mycli'
-alias pgcli='docker run --rm -it -v ~/.config/pgcli:/root/.config/pgcli -v $(pwd):/app us-east4.pkg.dev/medal-shared/medal-docker/local/pgcli'
+alias mycli='docker run --rm -it -v ~/.myclirc:/.myclirc -v ~/.mycli-history:/root/.mycli-history -v $(pwd):/app us-east4-docker.pkg.dev/medal-shared/medal-docker/local/mycli'
+alias pgcli='docker run --rm -it -v ~/.config/pgcli:/root/.config/pgcli -v $(pwd):/app us-east4-docker.pkg.dev/medal-shared/medal-docker/local/pgcli'
