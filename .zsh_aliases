@@ -1,6 +1,6 @@
 token () {
     local length=${1:-20}
-    python -c 'import os, base64, sys; print(base64.urlsafe_b64encode(os.urandom(int(sys.argv[1]))).decode("utf-8").rstrip("="))' $length
+    python3 -c 'import os, base64, sys; print(base64.urlsafe_b64encode(os.urandom(int(sys.argv[1]))).decode("utf-8").rstrip("="))' $length
 }
 
 highstate-analyze () {
@@ -13,7 +13,7 @@ plist_to_json () {
 
 extract-eqsep-fields () {
     # Allows easy filtering of KEY=VAL KEY2=VAL2 data
-    python -c "
+    python3 -c "
 import sys
 fields = sys.argv[1].split(',') if len(sys.argv) == 2 else []
 for line in sys.stdin:
@@ -58,7 +58,7 @@ cert () {
 }
 
 interval () {
-    python -c "import argparse, sys
+    python3 -c "import argparse, sys
 
 def main():
     parser = argparse.ArgumentParser()
@@ -125,7 +125,7 @@ sum() {
 
 mediainfo() {
     docker run --rm -it -v $(pwd):/tmp --read-only jlesage/mediainfo mediainfo --Output=JSON $@ \
-        | python -m json.tool
+        | python3 -m json.tool
 }
 
 alias .=source
@@ -144,9 +144,9 @@ alias sudo='sudo '
 alias history='history -Di'
 alias serve='python3 -m http.server'
 alias space='du -shc *(N) .[^.]*(N) | gsort -h'
-alias json='python -m json.tool'
+alias json='python3 -m json.tool'
 alias xml='python3 -c "import sys, xml.dom.minidom; ugly_xml = xml.dom.minidom.parseString(sys.stdin.read()); print(ugly_xml.toprettyxml(), end=\"\")"'
-alias pc='python -c'
+alias pc='python3 -c'
 alias fw='sudo iptables -L -v -n --line-numbers'
 alias fw6='sudo ip6tables -L -v -n --line-numbers'
 alias ql='qlmanage -p'
@@ -155,7 +155,7 @@ alias g=git
 alias v=vagrant
 # Guard since I often mistype `g s`
 alias gs='g s'
-alias uuid='python -c "import uuid; print(uuid.uuid4())"'
+alias uuid='python3 -c "import uuid; print(uuid.uuid4())"'
 alias telnet='echo "Escape is probably Ctrl+5!"; telnet'
 alias did="vim ~/Dropbox/Notater/done.md +'r!date' +'normal o' +'normal O-  ' +startinsert -c 'set tw=80'"
 alias beep='say -v Alex "[[volm 3.0]] BEEP BEEP BEEP BEEP Your [[emph ++]] thang [[emph -]] [[slnc 10]] is done" -r 250'
