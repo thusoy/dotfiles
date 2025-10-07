@@ -99,7 +99,7 @@ export GEM_HOME=~/.local/gem
 export GEM_PATH=~/.local/gem
 
 # Don't clear the screen after quitting a manual page.
-export MANPAGER='less -X';
+export MANPAGER='less -Xi';
 
 # MacPorts installs to /opt/local
 export MANPATH="/opt/local/man:$MANPATH"
