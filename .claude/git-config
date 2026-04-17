@@ -1,0 +1,6 @@
+# This file is used by sandboxed claude code invocations, doesn't include
+# commit signing as that's done manually outside of the sandbox when the
+# changes are reviewed.
+[user]
+    email = git@thusoy.com
+    name = Tarjei Husøy
