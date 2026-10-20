@@ -50,6 +50,11 @@
     lga = log --graph --all --oneline
     fix = commit --amend
     plr = pull --rebase --prune
+    resign = "!f() { \
+        base=\"${1:-main}\"; \
+        git rebase \"$base\" --exec '[ "$(git log -1 --pretty=format:%G?)" = N ] && git commit --amend --no-edit -n -S || true'; \
+    }; f"
+    pr = "!f() { git checkout -b $1 && git pusho && gh pr create --fill; }; f"
 
     # Creds to http://stackoverflow.com/a/39086325/5590192
     ignore = update-index --skip-worktree
