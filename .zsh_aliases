@@ -128,6 +128,43 @@ mediainfo() {
         | python3 -m json.tool
 }
 
+ql() {
+  # Going via a tiny swift app to avoid qlmanage crashing on video previews due to missing entitlements
+  local bin=~/.local/bin/ql-preview
+  if [[ ! -x $bin ]]; then
+    mkdir -p ${bin:h}
+    swiftc -O -module-name ql -o $bin - <<'EOF' || return
+import Cocoa
+import Quartz
+
+let urls = CommandLine.arguments.dropFirst().map { URL(fileURLWithPath: $0) }
+
+class App: NSObject, NSApplicationDelegate, QLPreviewPanelDataSource {
+    func applicationDidFinishLaunching(_ note: Notification) {
+        let panel = QLPreviewPanel.shared()!
+        panel.dataSource = self
+        NotificationCenter.default.addObserver(
+            forName: NSWindow.willCloseNotification, object: panel, queue: nil
+        ) { _ in NSApp.terminate(nil) }
+        panel.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    func numberOfPreviewItems(in panel: QLPreviewPanel!) -> Int { urls.count }
+    func previewPanel(_ panel: QLPreviewPanel!, previewItemAt index: Int) -> QLPreviewItem! {
+        urls[index] as QLPreviewItem
+    }
+}
+
+let app = NSApplication.shared
+let delegate = App()
+app.delegate = delegate
+app.setActivationPolicy(.accessory)
+app.run()
+EOF
+  fi
+  $bin "$@"
+}
+
 alias .=source
 alias ..='cd ..'
 alias ...='cd ../../'
@@ -153,7 +190,6 @@ print(doc.toprettyxml(indent=\"    \"), end=\"\")
 alias pc='python3 -c'
 alias fw='sudo iptables -L -v -n --line-numbers'
 alias fw6='sudo ip6tables -L -v -n --line-numbers'
-alias ql='qlmanage -p'
 alias ptr='dig +short -x'
 alias g=git
 alias v=vagrant
