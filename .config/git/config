@@ -1,6 +1,7 @@
 [user]
     email = git@thusoy.com
     name = Tarjei Husøy
+    signingkey = ~/.ssh/id_ecdsa_sk_rk.pub
 [core]
     input = auto
     eol = lf
@@ -8,6 +9,8 @@
     excludesfile = "~/.config/git/ignore"
     whitespace=tab-in-indent
     pager = less -FRX
+[gpg]
+    format = ssh
 [commit]
     gpgsign = true
 [tag]
