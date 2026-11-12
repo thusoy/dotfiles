@@ -23,3 +23,6 @@ defaults write -g NSUserKeyEquivalents -dict-add "Lock Screen" '$@x'
 # Set repeat rate and initial delay
 defaults write -g KeyRepeat -int 1
 defaults write -g InitialKeyRepeat -int 10
+
+# Increase duration of screenshot thumbnail shown in corner of screen
+defaults write com.apple.screencaptureui "thumbnailExpiration" -float 15 && killall SystemUIServer
