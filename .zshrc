@@ -123,6 +123,9 @@ bindkey '\CI' expand-or-complete-prefix
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
 
+# Configure ssh key provider
+export SSH_SK_PROVIDER=/usr/lib/ssh-keychain.dylib
+
 # Enable color support of ls
 if [ -x /opt/local/bin/gdircolors ]; then
     test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
