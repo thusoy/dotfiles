@@ -155,6 +155,35 @@ g() {
             return
         fi
     fi
+    if [[ ($1 == br || $1 == branch) && ($2 == -d || $2 == -D) && $# -ge 3 ]]; then
+        local force= branch dir main
+        [[ $2 == -D ]] && force=--force
+        for branch in "${@[3,-1]}"; do
+            [[ $branch == -* ]] && continue
+            dir=$(command git worktree list --porcelain 2>/dev/null | awk -v ref="refs/heads/$branch" '
+                /^worktree / { path = substr($0, 10) }
+                $0 == "branch " ref { print path; exit }')
+            [[ -n $dir ]] || continue
+            # leave the worktree before it disappears from under the shell
+            if [[ ${PWD:A} == ${dir:A} || ${PWD:A} == ${dir:A}/* ]]; then
+                main=$(command git worktree list --porcelain 2>/dev/null | awk '/^worktree / { print substr($0, 10); exit }')
+                cd "$main" && print -r -- "-> $main"
+            fi
+            command git worktree remove $force "$dir" || return
+            [[ $branch == $_g_previous ]] && _g_previous=
+        done
+    fi
+    if [[ $1 == brclean && $# -eq 1 ]]; then
+        command git fetch -p || return
+        local main=$(command git symbolic-ref -q --short refs/remotes/origin/HEAD 2>/dev/null || echo origin/main)
+        local stale=$({
+            command git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads/ | awk '$2 == "[gone]" { print $1 }'
+            command git for-each-ref --format='%(refname:short)' --merged "$main" refs/heads/
+        } | grep -vx "${main#origin/}" | sort -u)
+        [[ -n $stale ]] || return 0
+        g branch -D ${=stale}
+        return
+    fi
     command git "$@"
 }
 
